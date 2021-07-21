@@ -6,8 +6,9 @@
 </head>
 <body>
 <div id="app">
+    <input type="text" v-model="campoTexto" v-on:keyup.enter="adicionar">
     <ul>
-        <input type="text" v-model="campoTexto" v-on:keyup.enter="adicionar">
+
         <li v-for="tarefa of tarefas">{{tarefa}}</li>
     </ul>
 </div>
