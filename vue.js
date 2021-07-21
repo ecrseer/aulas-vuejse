@@ -10,7 +10,7 @@ const app = new Vue({
     },
     methods:{
         adicionar(){
-            this
+            this.tarefas.push(this.campoTexto)
         }
     }
 
