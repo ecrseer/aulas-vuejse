@@ -7,7 +7,8 @@ const app = new Vue({
             'limpar a casa',
             'lavar a louca'
         ],
-        campoTexto:''
+        campoTexto:'',
+        isBlackoutMoment:true,
     },
     methods:{
         adicionar(){
