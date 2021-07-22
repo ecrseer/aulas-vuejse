@@ -7,9 +7,16 @@
 <body>
 <div id="app">
 <h1>Listinha de tarefas</h1>
+
     <input type="text" v-model="campoTexto" v-on:keyup.enter="adicionar">
     <ul>
-        <li v-for="tarefa of tarefas">{{tarefa}}</li>
+        <li v-for=
+        "(tarefa,indice) of tarefas":key="indice">
+            {{tarefa}}
+            <button @click="remover(indice)">remover</button>
+            <button @click="editar(indice)">editar</button>
+
+        </li>
     </ul>
 </div>
 
