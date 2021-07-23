@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body{
+        margin: 0 auto;
+
+    }
+    #app{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+    }
+    input{
+        margin: 20px;
+        border-bottom: 1px solid white;
+        width: 190px;
+
+        border-bottom: 1px solid white;
+        text-align: center;
+        outline: none;
+    }
+    li{
+        border: 1px solid rgba(255,255,255,0.5);
+        margin: 15px;
+        padding: 15px;
+        list-style-type: none;
+    }
+    button{
+        padding: 2px;
+        margin: 2px;
+        border: none;
+        background: #222;
+        color: white;
+        border-radius: 2px;
+    }
+    .escurin{
+        background: #222;
+        color: white;
+    }
+
+</style>
+<body v-bind:class="{escurin:isBlackoutMoment}">
+<div id="app" v-bind:class="{escurin:isBlackoutMoment}">
+<h1>Listinha de tarefas</h1>
+    <button
+        @click="()=>this.isBlackoutMoment = !this.isBlackoutMoment"
+            > {{isBlackoutMoment? 'Solzinho' : 'Sombrinha'}}</button>
+    <input type="text"
+           v-bind:class="{escurin:isBlackoutMoment}"
+           v-model="campoTexto" v-on:keyup.enter="adicionar">
+    <ul>
+        <li v-for=
+        "(tarefa,indice) of tarefas":key="indice">
+            {{tarefa}}
+            <button @click="remover(indice)">remover</button>
+            <button @click="editar(indice)">editar</button>
+
+        </li>
+    </ul>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="vue.js"></script>
+</body>
+</html>
