@@ -12,7 +12,11 @@
 
 <body>
 <div id="app">
-
+    <input type="text" v-model="cep">
+    <h1>Seu cep eh {{this.cep}}</h1>
+    <h3>vc mora na:
+        {{this.dados.logradouro}}
+    </h3>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -22,7 +26,7 @@
         el: '#app',
         data: () => {
             return{
-                cep:'22220',
+                cep:'20010020',
                 dados:{}
             }
         },
@@ -48,7 +52,11 @@
             // debugger
         },
         mounted() {
-            carregar()
+            fetch(`https://viacep.com.br/ws/${this.cep}/json`)
+                .then(resposta=>resposta.json())
+                .then((dadosJson)=>{
+                    this.dados=dadosJson
+                })
         },
         beforeUpdate() {
             // debugger
