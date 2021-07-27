@@ -73,12 +73,15 @@
             carregar() {
 
             },
-            salvarFilme(){
+            salvarFilme(e){
+                e.preventDefault()
                 let novoFilme={
                     nome:this.nomeFilme,
                     ano:this.anoFilme,
                     tipo:this.tipoFilme
                 }
+                this.filmes.push(novoFilme)
+
             }
         },
         beforeCreate() {
