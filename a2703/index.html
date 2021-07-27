@@ -19,11 +19,13 @@
     <form class="my-3">
         <div class="col-12">
             <label for="nome" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="nome" placeholder="Nome">
+            <input v-model.trim="nomeFilme"
+                    type="text" class="form-control" id="nome" placeholder="Nome">
         </div>
         <div class="col-12">
             <label for="ano" class="form-label">Ano</label>
-            <input type="text" class="form-control" id="ano" placeholder="Ano">
+            <input v-model.trim="anoFilme"
+                    type="text" class="form-control" id="ano" placeholder="Ano">
         </div>
         <div class="col-12">
             <label for="tipo" class="form-label">Tipo</label>
@@ -72,7 +74,11 @@
 
             },
             salvarFilme(){
-                this.filmes[0].nome='nada'
+                let novoFilme={
+                    nome:this.nomeFilme,
+                    ano:this.anoFilme,
+                    tipo:this.tipoFilme
+                }
             }
         },
         beforeCreate() {
