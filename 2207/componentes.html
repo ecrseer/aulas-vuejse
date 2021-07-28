@@ -18,6 +18,8 @@
 
     <filme-formulario :filmes="filmes"></filme-formulario>
 
+    <Section-lista-filmes :filmes="filmes"></Section-lista-filmes>
+
     <!--<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
         <div class="col" v-for="filme in filmes">
             <div class="card mb-4 rounded-3 shadow-sm">
@@ -86,6 +88,7 @@
     Vue.component('Section-lista-filmes',{
         template:`
         <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        <p>lista de filmes</p>
         <div class="col" v-for="filme in filmes">
             <div class="card mb-4 rounded-3 shadow-sm">
                 <div class="card-header py-3">
@@ -102,6 +105,17 @@
         </div>
     </div>
         `,
+        props: {
+            filmes: Array
+        },
+
+        data: () => {
+
+        },
+
+        methods: {
+
+        }
 
     })
 
