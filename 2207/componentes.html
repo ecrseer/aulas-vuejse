@@ -18,7 +18,7 @@
 
     <filme-formulario :filmes="filmes"></filme-formulario>
 
-    <Section-lista-filmes :filmes="filmes"></Section-lista-filmes>
+    <section-lista-filmes :filmes="filmes"></section-lista-filmes>
 
     <!--<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
         <div class="col" v-for="filme in filmes">
@@ -85,7 +85,7 @@
         }
 
     })
-    Vue.component('Section-lista-filmes',{
+    Vue.component('section-lista-filmes',{
         template:`
         <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
         <p>lista de filmes</p>
@@ -109,9 +109,6 @@
             filmes: Array
         },
 
-        data: () => {
-
-        },
 
         methods: {
 
