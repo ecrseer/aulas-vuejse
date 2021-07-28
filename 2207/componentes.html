@@ -41,35 +41,6 @@
 
 <script>
 
-    const app = new Vue({
-        el: '#app',
-        data: () => {
-            return {
-                filmes: [],
-            }
-        },
-        methods: {
-            carregar() {
-                fetch('filmes.json').then(r => r.json()).then((dados) => {
-                    this.filmes = dados
-                })
-            },
-            salvar() {
-                this.filmes.push(this.formulario)
-                this.formulario = {}
-            }
-        },
-        beforeCreate() {
-
-        },
-        created() {
-        },
-        beforeMount() {
-        },
-        mounted() {
-            this.carregar()
-        },
-    })
 
 
     Vue.component('filme-formulario', {
@@ -132,6 +103,37 @@
     </div>
         `,
 
+    })
+
+
+    const app = new Vue({
+        el: '#app',
+        data: () => {
+            return {
+                filmes: [],
+            }
+        },
+        methods: {
+            carregar() {
+                fetch('filmes.json').then(r => r.json()).then((dados) => {
+                    this.filmes = dados
+                })
+            },
+            salvar() {
+                this.filmes.push(this.formulario)
+                this.formulario = {}
+            }
+        },
+        beforeCreate() {
+
+        },
+        created() {
+        },
+        beforeMount() {
+        },
+        mounted() {
+            this.carregar()
+        },
     })
 
 
