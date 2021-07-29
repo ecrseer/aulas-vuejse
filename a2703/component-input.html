@@ -18,9 +18,12 @@
   <button v-on:click="salvarComponentePai">aa</button>
   <func-test :fom="formulariopai"></func-test>
   <filme-formulario :filmes="filmes">
-    <input-formulario v-bind:formi="formulariopai">
+    <input-formulario
+    v-bind:nomecampop="formulariopai[0]"
+    >
 
     </input-formulario>
+
   </filme-formulario>
 
   <filme-lista titulo="Todos os filmes em destaque">
@@ -35,11 +38,13 @@
 <script>
   Vue.component('func-test',{
     template:`
-    <button v-on:click="()=>funcaoFilho(fom)">{{fom}}</button>
-
+<div>
+<slot></slot>
+    <button v-on:click="()=>funcaoFilho(fom)">{{fom[0]}}</button>
+</div>
     `,
     props:{
-      fom:Object
+      fom:Array
     },
     data:()=>{
       return{
@@ -47,9 +52,10 @@
       }
     },
     methods:{
-      funcaoFilho(fom){
-        console.log('botaofilh1')
-        console.log('botaofilh2'+fom.nome)
+      funcaoFilho(parametro){
+        
+        console.log('botaofilh2 parametro'+parametro[0])
+        console.log('prop que veio foi'+fom)
       }
     },
 
@@ -58,21 +64,22 @@
   Vue.component('input-formulario',{
     template:`
     <div class="col-12">
-        <label for="nome-campop" class="form-label">{{nome-campop}}</label>
+        <label for="nomecampop" class="form-label">{{nomecampop}}</label>
         <input type="text" class="form-control"
-        id="nome-campop" placeholder="nome-campop" v-model="formi.nome-campo">
+        id="nomecampop" placeholder="nomecampop" v-model="campotexto">
     </div>
         `,
     data:()=>{
       return{
-        formulariofilho:{
-
-        }
+        campotexto:''
       }
     }
     ,
+    methods:{
+
+    },
     props:{
-      'nome-campo':String
+      'nomecampop':String
     },
 
    
@@ -168,9 +175,7 @@
     data: () => {
       return {
         filmes: [],
-        formulariopai:{
-          nome:'inicial',
-        }
+        formulariopai:['nome']
       }
     },
     methods: {
