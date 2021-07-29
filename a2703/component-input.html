@@ -15,9 +15,10 @@
 
 <body>
 <div id="app" class="container py-3">
-
+  <button v-on:click="salvarComponentePai">aa</button>
+  <func-test v-on:click="salvarComponentePai"></func-test>
   <filme-formulario :filmes="filmes">
-    <input-formulario v-bind:formi="formulario">
+    <input-formulario v-bind:formi="formulariopai">
 
     </input-formulario>
   </filme-formulario>
@@ -26,7 +27,7 @@
     <filme-item v-for="ff in filmes" :filme="ff">
     </filme-item>
   </filme-lista>
-  <func-test salvarComponenteFilho="salvarComponentePai"></func-test>
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -34,7 +35,7 @@
 <script>
   Vue.component('func-test',{
     template:`
-    <button v-on:click="SCF">salvarComponentePai</button>
+    <button v-on:click="salvarComponenteFilho">salvarComponentePai</button>
 
     `,
     data:()=>{
@@ -46,9 +47,6 @@
     },
     props:{
       salvarComponenteFilho:Function
-    },
-    computed: {
-      SCF:this.ccc,
     }
   })
   Vue.component('input-formulario',{
@@ -116,11 +114,11 @@
         <slot></slot>
         <div class="col-12">
           <label for="valor" class="form-label">valor</label>
-          <input type="text" class="form-control" id="valor" placeholder="valor" v-model="formulario.valor">
+          <input type="text" class="form-control" id="valor" placeholder="valor" v-model="formulariofilho.valor">
         </div>
         <div class="col-12">
           <label for="Descricao" class="form-label">Descricao</label>
-          <input type="text" class="form-control" id="Descricao" placeholder="Descricao" v-model="formulario.descricao">
+          <input type="text" class="form-control" id="Descricao" placeholder="Descricao" v-model="formulariofilho.descricao">
         </div>
         <button class="btn btn-success mt-3" @click="salvar">Salvar</button>
       </div>
@@ -132,7 +130,7 @@
 
     data: () => {
       return {
-        formulario: {
+        formulariofilho: {
           titulo: '',
           valor: '',
           descricao: '',
@@ -142,8 +140,8 @@
 
     methods: {
       salvar() {
-        this.filmes.push(this.formulario)
-        this.formulario = {}
+        this.filmes.push(this.formulariofilho)
+        this.formulariofilho = {}
       }
     }
 
@@ -155,7 +153,7 @@
     data: () => {
       return {
         filmes: [],
-        formulario:{}
+        formulariopai:{}
       }
     },
     methods: {
@@ -163,10 +161,6 @@
         fetch('filmes.json').then(r => r.json()).then((dados) => {
           this.filmes = dados
         })
-      },
-      salvar() {
-        this.filmes.push(this.formulario)
-        this.formulario = {}
       },
       salvarComponentePai(){
         console.log('salvei')
