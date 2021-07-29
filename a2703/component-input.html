@@ -20,8 +20,12 @@
   <filme-formulario :filmes="filmes">
     <input-formulario
     v-bind:nomecampop="atributosformulariopai[0]"
-    v-model="formulariopai.nome"
+    v-model="formulariopai.titulo"
     >
+      <input-formulario
+              v-bind:nomecampop="atributosformulariopai[0]"
+              v-model="formulariopai.titulo"
+      >
 
     </input-formulario>
 
@@ -85,7 +89,7 @@
       }
     },
     props:{
-      'nomecampop':String,
+      nomecampop:String,
 
     },
 
@@ -138,17 +142,22 @@
 
 
   Vue.component('filme-formulario', {
-    template: `
-      <div class="form my-3">
-        <slot></slot>
-        <div class="col-12">
+    antigo:`
+    <div class="col-12">
           <label for="valor" class="form-label">valor</label>
-          <input type="text" class="form-control" id="valor" placeholder="valor" v-model="formulariofilho.valor">
+          <input type="text" class="form-control" id="valor" placeholder="valor" v-model="formulariopai.valor">
         </div>
         <div class="col-12">
           <label for="Descricao" class="form-label">Descricao</label>
-          <input type="text" class="form-control" id="Descricao" placeholder="Descricao" v-model="formulariofilho.descricao">
+          <input type="text" class="form-control" id="Descricao" placeholder="Descricao" v-model="formulariopai.descricao">
         </div>
+    `,
+    template: `
+      <div class="form my-3">
+        <slot></slot>
+        <slot></slot>
+        <slot></slot>
+
         <button class="btn btn-success mt-3" @click="salvar">Salvar</button>
       </div>
     `,
@@ -182,7 +191,7 @@
     data: () => {
       return {
         filmes: [],
-        atributosformulariopai:['titulo'],
+        atributosformulariopai:['titulo','descricao','valor'],
         formulariopai:{
           titulo:'',
           descricao:'',
