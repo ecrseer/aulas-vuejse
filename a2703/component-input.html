@@ -26,12 +26,31 @@
     <filme-item v-for="ff in filmes" :filme="ff">
     </filme-item>
   </filme-lista>
-
+  <func-test salvarComponenteFilho="salvarComponentePai"></func-test>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 <script>
+  Vue.component('func-test',{
+    template:`
+    <button v-on:click="SCF">salvarComponentePai</button>
+
+    `,
+    data:()=>{
+      return{
+        ccc:()=>{
+          console.log('data')
+        }
+      }
+    },
+    props:{
+      salvarComponenteFilho:Function
+    },
+    computed: {
+      SCF:this.ccc,
+    }
+  })
   Vue.component('input-formulario',{
     template:`
     <div class="col-12">
@@ -43,14 +62,7 @@
     props:{
       formi:Object
     },
-    data:()=>{
-      return{
-        formulario:{
-          this....formi,
-          formi.titulo,
-        }
-      }
-    }
+   
 
   })
   Vue.component('filme-body', {
@@ -155,6 +167,9 @@
       salvar() {
         this.filmes.push(this.formulario)
         this.formulario = {}
+      },
+      salvarComponentePai(){
+        console.log('salvei')
       }
     },
     beforeCreate() {
