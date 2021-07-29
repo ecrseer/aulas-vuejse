@@ -21,13 +21,19 @@
     <input-formulario
     v-bind:nomecampop="atributosformulariopai[0]"
     v-model="formulariopai.titulo"
-    >
-      <input-formulario
-              v-bind:nomecampop="atributosformulariopai[0]"
-              v-model="formulariopai.titulo"
-      >
+    ></input-formulario>
 
-    </input-formulario>
+      <input-formulario
+              v-bind:nomecampop="atributosformulariopai[1]"
+                v-model="formulariopai.descricao"
+      ></input-formulario>
+
+        <input-formulario
+                v-bind:nomecampop="atributosformulariopai[2]"
+                v-model="formulariopai.valor"
+        ></input-formulario>
+
+
 
   </filme-formulario>
 
@@ -74,6 +80,7 @@
         <input type="text" class="form-control"
         v-bind:id="nomecampop" v-bind:placeholder="nomecampop"
         v-on:input="$emit('input',$event.target.value)"
+        v-bind:value="value"
         >
     </div>
         `,
@@ -90,6 +97,7 @@
     },
     props:{
       nomecampop:String,
+      value:String
 
     },
 
@@ -155,8 +163,6 @@
     template: `
       <div class="form my-3">
         <slot></slot>
-        <slot></slot>
-        <slot></slot>
 
         <button class="btn btn-success mt-3" @click="salvar">Salvar</button>
       </div>
@@ -178,6 +184,7 @@
 
     methods: {
       salvar() {
+        console.log('formpai'+this.formulariopai)
         this.filmes.push(this.formulariofilho)
         this.formulariofilho = {}
       }
