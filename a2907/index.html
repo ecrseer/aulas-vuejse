@@ -16,7 +16,7 @@
 <body>
 <div id="app" class="container py-3">
 
-    <filme-formulario :filmes="filmes"></filme-formulario>
+    <filme-formulario :objfilme="filme"></filme-formulario>
 
     <filme-lista titulo="filmes em destaque">
         <filme-item v-for="ff in filmes" :filme="ff">
@@ -109,32 +109,21 @@
     Vue.component('filme-formulario', {
         template: `
       <div class="form my-3">
-        <campo nome="Titulo" v-model="formulario.titulo"></campo>
-        <campo nome="Valor" v-model="formulario.valor"></campo>
-        <campo nome="Descrição" v-model="formulario.descricao"></campo>
-        <selecao v-model="formulario.numero" ></selecao>
+        <campo nome="Titulo" v-model="objfilme.titulo"></campo>
+        <campo nome="Valor" v-model="objfilme.valor"></campo>
+        <campo nome="Descrição" v-model="objfilme.descricao"></campo>
+        <selecao v-model="objfilme.numero" ></selecao>
         <button class="btn btn-success mt-3" @click="salvar">Salvar</button>
       </div>
     `,
 
         props: {
-            filmes: Array
+            objfilme:Object
         },
-
-        data: () => {
-            return {
-                formulario: {
-                    titulo: 'teste',
-                    valor: '123',
-                    descricao: 'ttt',
-                }
-            }
-        },
-
         methods: {
             salvar() {
-                this.filmes.push(this.formulario)
-                this.formulario = {}
+                this.filmes.push(this.objfilme)
+                this.objfilme = {}
             }
         }
 
@@ -146,6 +135,7 @@
         data: () => {
             return {
                 filmes: [],
+                filme:{}
             }
         },
         methods: {
@@ -153,7 +143,8 @@
                 fetch('filmes.json').then(r => r.json()).then((dados) => {
                     this.filmes = dados
                 })
-            }
+            },
+
         },
         beforeCreate() {
 
