@@ -1,0 +1,26 @@
+<template>
+  <div class="col">
+    <div class="card mb-4 rounded-3 shadow-sm">
+      <div class="card-header py-3">
+        <h4 class="my-0 fw-normal">{{ filme.titulo }}</h4>
+      </div>
+      <FilmeBody :filme="filme"></FilmeBody>
+    </div>
+  </div>
+</template>
+
+<script>
+import FilmeBody from "./FilmeBody";
+export default {
+  name: "FilmeItem",
+  components: {FilmeBody},
+  props:{
+    filme: Object
+  }
+
+}
+</script>
+
+<style scoped>
+
+</style>

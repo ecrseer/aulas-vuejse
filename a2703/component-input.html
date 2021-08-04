@@ -17,23 +17,7 @@
 <div id="app" class="container py-3">
   <button v-on:click="salvarComponentePai">aa</button>
   <func-test :fom="atributosformulariopai"></func-test>
-  <filme-formulario :filmes="filmes">
-    <input-formulario
-    v-bind:nomecampop="atributosformulariopai[0]"
-    v-model="formulariopai.titulo"
-    ></input-formulario>
-
-      <input-formulario
-              v-bind:nomecampop="atributosformulariopai[1]"
-                v-model="formulariopai.descricao"
-      ></input-formulario>
-
-        <input-formulario
-                v-bind:nomecampop="atributosformulariopai[2]"
-                v-model="formulariopai.valor"
-        ></input-formulario>
-
-
+  <filme-formulario v-bind:formulariop="formulariopai">
 
   </filme-formulario>
 
@@ -73,37 +57,7 @@
 
 
   })
-  Vue.component('input-formulario',{
-    template:`
-    <div class="col-12">
-        <label v-bind:for="nomecampop" class="form-label">{{nomecampop}}</label>
-        <input type="text" class="form-control"
-        v-bind:id="nomecampop" v-bind:placeholder="nomecampop"
-        v-on:input="$emit('input',$event.target.value)"
-        v-bind:value="value"
-        >
-    </div>
-        `,
-    data:()=>{
-      return{
-        campotexto:''
-      }
-    }
-    ,
-    methods:{
-      handleChange(e){
-        console.log(this.campotexto)
-      }
-    },
-    props:{
-      nomecampop:String,
-      value:String
 
-    },
-
-   
-
-  })
   Vue.component('filme-body', {
     template: `
       <div class="card-body">
@@ -148,45 +102,72 @@
     }
   })
 
+  Vue.component('input-formulario',{
+    template:`
+    <div class="col-12">
+        <label v-bind:for="nomecampop" class="form-label">{{nomecampop}}</label>
+        <input type="text" class="form-control"
+        v-bind:id="nomecampop" v-bind:placeholder="nomecampop"
+        v-on:input="$emit('input',$event.target.value)"
+        v-bind:value="value"
+        >
+    </div>
+        `,
+    data:()=>{
+      return{
+        campotexto:''
+      }
+    }
+    ,
+    methods:{
+      handleChange(e){
+        console.log(this.campotexto)
+      }
+    },
+    props:{
+      nomecampop:String,
+      value:String
+
+    },
+
+
+
+  })
 
   Vue.component('filme-formulario', {
     antigo:`
     <div class="col-12">
           <label for="valor" class="form-label">valor</label>
-          <input type="text" class="form-control" id="valor" placeholder="valor" v-model="formulariopai.valor">
+          <input type="text" class="form-control" id="valor"
+          placeholder="valor" v-model="formulariop.valor">
         </div>
         <div class="col-12">
           <label for="Descricao" class="form-label">Descricao</label>
-          <input type="text" class="form-control" id="Descricao" placeholder="Descricao" v-model="formulariopai.descricao">
+          <input type="text" class="form-control" id="Descricao"
+           placeholder="Descricao" v-model="formulariop.descricao">
         </div>
     `,
     template: `
       <div class="form my-3">
-        <slot></slot>
+      <input-formulario nomecampop="formulariop.titulo"></input-formulario>
+      <input-formulario nomecampop="formulariop.descricao"></input-formulario>
+      <input-formulario nomecampop="formulariop.valor"></input-formulario>
 
         <button class="btn btn-success mt-3" @click="salvar">Salvar</button>
       </div>
     `,
 
     props: {
-      filmes: Array
+
+      formulariop:Object
     },
 
-    data: () => {
-      return {
-        formulariofilho: {
-          titulo: '',
-          valor: '',
-          descricao: '',
-        }
-      }
-    },
 
     methods: {
       salvar() {
-        console.log('formpai'+this.formulariopai)
-        this.filmes.push(this.formulariofilho)
-        this.formulariofilho = {}
+        console.log('formpai'+this.formulariop)
+        this.filmes.push(this.formulariop)
+        this.formulariop = {}
       }
     }
 

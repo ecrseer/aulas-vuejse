@@ -16,13 +16,12 @@
 <body>
 <div id="app" class="container py-3">
 
-    <filme-formulario :objfilme="filme" v-on:avisarComponentePai="salvarFilmeComponentePai"></filme-formulario>
+    <filme-formulario :filmes="filmes"></filme-formulario>
 
     <filme-lista titulo="filmes em destaque">
         <filme-item v-for="ff in filmes" :filme="ff">
         </filme-item>
     </filme-lista>
-
 
 </div>
 
@@ -78,8 +77,8 @@
         template: `
       <div class="col-12">
         <label :for="nome" class="form-label">{{ nome }}</label>
-        <input type="text" class="form-control" :id="nome" :placeholder="nome"
-         :value="value"
+        <input type="text" class="form-control" :id="nome"
+               :placeholder="nome" :value="value"
                @input="$emit('input', $event.target.value)">
       </div>
     `,
@@ -109,22 +108,33 @@
     Vue.component('filme-formulario', {
         template: `
       <div class="form my-3">
-        <campo nome="Titulo" v-model="objfilme.titulo"></campo>
-        <campo nome="Valor" v-model="objfilme.valor"></campo>
-        <campo nome="Descrição" v-model="objfilme.descricao"></campo>
-        <selecao v-model="objfilme.numero" ></selecao>
-        <button class="btn btn-success mt-3" @click="avisarFormulario">Salvar</button>
+
+        <campo nome="Titulo" v-model="formulario.titulo"></campo>
+        <campo nome="Valor" v-model="formulario.valor"></campo>
+        <campo nome="Descrição" v-model="formulario.descricao"></campo>
+        <button class="btn btn-success mt-3" @click="salvar">Salvar</button>
       </div>
     `,
 
         props: {
-            objfilme:Object
+            filmes: Array
         },
+/*preciso ter elementos no data para
+passar props como props novamente?*/
+        data: () => {
+            return {
+                formulario: {
+                    titulo: 'teste',
+                    valor: '123',
+                    descricao: 'ttt',
+                }
+            }
+        },
+
         methods: {
-            avisarFormulario() {
-
-                this.$emit('avisarComponentePai',this.filme)
-
+            salvar() {
+                this.filmes.push(this.formulario)
+                this.formulario = {}
             }
         }
 
@@ -136,7 +146,6 @@
         data: () => {
             return {
                 filmes: [],
-                filme:{}
             }
         },
         methods: {
@@ -144,14 +153,7 @@
                 fetch('filmes.json').then(r => r.json()).then((dados) => {
                     this.filmes = dados
                 })
-            },
-            salvarFilmeComponentePai(){
-                console.log('salvandoG')
-                this.filmes.push(this.filme)
-                this.filme = {}
-
             }
-
         },
         beforeCreate() {
 
