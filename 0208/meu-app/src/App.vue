@@ -1,6 +1,6 @@
 <template>
   <div class="container py-3">
-    <FilmeFormulario :filme="filme" @salvou="carregar"></FilmeFormulario>
+    <FilmeFormulario :filme="filme" @salvou="cadastrar"></FilmeFormulario>
 
     <FilmeLista titulo="filmes em destaque">
       <FilmeItem v-for="ff in filmes" :filme="ff" @editar="editarFilme">
@@ -38,6 +38,7 @@ export default {
     },
     cadastrar(){
       this.filmes.push(this.filme)
+
       this.filme = {}
     }
   },
