@@ -1,9 +1,9 @@
 <template>
   <div class="container py-3">
-    <FilmeFormulario :filmes="filmes"></FilmeFormulario>
+    <FilmeFormulario :filme="filme" @salvou="carregar"></FilmeFormulario>
 
     <FilmeLista titulo="filmes em destaque">
-      <FilmeItem v-for="ff in filmes" :filme="ff">
+      <FilmeItem v-for="ff in filmes" :filme="ff" @editar="editarFilme">
       </FilmeItem>
     </FilmeLista>
   </div>
@@ -18,8 +18,11 @@ export default {
   components: {FilmeItem, FilmeLista, FilmeFormulario},
     data:()=>{
       return{
-        filme:{
 
+        filme:{
+          titulo: '',
+          valor: '',
+          descricao:''
         },
         filmes:[]
       }
@@ -27,7 +30,15 @@ export default {
         },
   methods:{
     carregar(){
+      this.filmes=[]
 
+    },
+    editarFilme(filmeP){
+      this.filme = filmeP
+    },
+    cadastrar(){
+      this.filmes.push(this.filme)
+      this.filme = {}
     }
   },
   mounted(){
