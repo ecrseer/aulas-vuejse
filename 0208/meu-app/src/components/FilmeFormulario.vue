@@ -13,14 +13,17 @@ import Campo from "./Campo.vue";
 export default {
   name: "FilmeFormulario",
   components: {Campo},
+  props:{
+    filme:Object,
+  },
+  methods:{
+    salvar(){
+      this.$emit('salvou',this.filme) /*what is this.filme paramt*/
+    }
+  },
   data:()=>{
     return {
-      formulario: {
-        titulo: '',
-        valor: '',
-        descricao:''
 
-      }
     }
   }
 }

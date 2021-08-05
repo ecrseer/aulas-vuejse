@@ -18,7 +18,10 @@ export default {
   components: {FilmeItem, FilmeLista, FilmeFormulario},
     data:()=>{
       return{
-        filme:{}
+        filme:{
+
+        },
+        filmes:[]
       }
 
         },
