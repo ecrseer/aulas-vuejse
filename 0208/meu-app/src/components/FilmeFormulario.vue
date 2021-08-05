@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Campo from "./Campo";
+import Campo from "./Campo.vue";
 export default {
   name: "FilmeFormulario",
   components: {Campo}

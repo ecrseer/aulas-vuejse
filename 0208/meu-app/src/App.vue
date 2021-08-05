@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import FilmeFormulario from "./components/FilmeFormulario";
-import FilmeLista from "./components/FilmeLista";
-import FilmeItem from "./components/FilmeItem";
+import FilmeFormulario from "./components/FilmeFormulario.vue";
+import FilmeLista from "./components/FilmeLista.vue";
+import FilmeItem from "./components/FilmeItem.vue";
 export default {
   components: {FilmeItem, FilmeLista, FilmeFormulario}
 }

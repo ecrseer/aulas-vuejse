@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import FilmeBody from "./FilmeBody";
+import FilmeBody from "./FilmeBody.vue";
 export default {
   name: "FilmeItem",
   components: {FilmeBody},
