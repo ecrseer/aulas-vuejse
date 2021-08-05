@@ -12,7 +12,17 @@
 import Campo from "./Campo.vue";
 export default {
   name: "FilmeFormulario",
-  components: {Campo}
+  components: {Campo},
+  data:()=>{
+    return {
+      formulario: {
+        titulo: '',
+        valor: '',
+        descricao:''
+
+      }
+    }
+  }
 }
 </script>
 
