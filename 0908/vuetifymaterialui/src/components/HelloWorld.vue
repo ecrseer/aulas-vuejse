@@ -2,43 +2,6 @@
   <v-container>
     <v-row class="text-center">
 
-      <v-form>
-        <v-input>
-          <v-text-field
-              v-model="teste"
-              :counter="20"
-              label="Exemplo2"
-              required
-          ></v-text-field>
-        </v-input>
-
-          <v-text-field
-              v-model="teste"
-              :counter="20"
-              label="Exemplo"
-              required
-          ></v-text-field>bon
-
-
-      </v-form>
-<!--
-      //exemplo gride filmes lista
-      <v-col
-          v-for="n in 24"
-          :key="n"
-          cols="4"
-      >
-        <v-card
-            class="pa-2"
-            outlined
-            tile
-        >
-          filme
-        </v-card>
-      </v-col>
--->
-
-      <div class="container py-3">
         <FilmeFormulario :filme="filme" @salvou="cadastra">
 
         </FilmeFormulario>
@@ -48,9 +11,6 @@
           </FilmeItem>
         </FilmeLista>
 
-
-
-      </div>
 
     </v-row>
   </v-container>
@@ -72,7 +32,12 @@ export default {
         valor: '1232222',
         descricao: 'ttt2222',
       },
-      filmes: [],
+      filmes: [
+        { "titulo": "erigoso gato",
+          "valor": "1232222",
+          "descricao": "cuidado"
+        }
+      ],
 
     }
   },
