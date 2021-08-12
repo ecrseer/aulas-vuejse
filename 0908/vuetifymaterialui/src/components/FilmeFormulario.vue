@@ -17,10 +17,12 @@ export default {
     filme: Object
   },
 
+
   methods: {
     salvar() {
       this.$emit('salvou', this.filme)
-    }
+    },
+
   }
 }
 </script>

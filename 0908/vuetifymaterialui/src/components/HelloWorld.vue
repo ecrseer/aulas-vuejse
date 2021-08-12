@@ -39,7 +39,9 @@
 -->
 
       <div class="container py-3">
-        <FilmeFormulario :filme="filme" @salvou="cadastra"></FilmeFormulario>
+        <FilmeFormulario :filme="filme" @salvou="cadastra">
+
+        </FilmeFormulario>
 
         <FilmeLista titulo="filmes em destaque">
           <FilmeItem v-for="ff in filmes" :filme="ff" @editar="edicao">
@@ -66,7 +68,7 @@ export default {
     return {
       teste: '',
       filme: {
-        titulo: 'teste2222',
+        titulo: '234',
         valor: '1232222',
         descricao: 'ttt2222',
       },
