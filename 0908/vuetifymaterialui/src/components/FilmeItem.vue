@@ -10,11 +10,14 @@
 </template>
 
 <script>
+import FilmeBody from "@/components/FilmeBody";
+
 export default {
   name: 'FilmeItem',
   props: {
     filme: Object
   },
+  components:{FilmeBody},
   methods: {
     editar() {
       this.$emit('editar', this.filme)

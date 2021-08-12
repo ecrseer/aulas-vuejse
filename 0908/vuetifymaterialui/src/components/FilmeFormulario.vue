@@ -8,8 +8,11 @@
 </template>
 
 <script>
+import Campo from "@/components/Campo";
+
 export default {
   name: 'FilmeFormulario',
+  components:{Campo},
   props: {
     filme: Object
   },
