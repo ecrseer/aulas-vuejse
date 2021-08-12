@@ -6,7 +6,7 @@
 
         </FilmeFormulario>
 
-        <FilmeLista titulo="filmes em destaque">
+        <FilmeLista titulo="Filmes em destaque">
           <FilmeItem v-for="ff in filmes" :filme="ff" @editar="edicao">
           </FilmeItem>
         </FilmeLista>
@@ -17,9 +17,11 @@
 </template>
 
 <script>
+import flms from "@/assets/filmes.json"
 import FilmeFormulario from "@/components/FilmeFormulario";
 import FilmeLista from "@/components/FilmeLista";
 import FilmeItem from "@/components/FilmeItem";
+
 export default {
   name: 'HelloWorld',
   components:{FilmeFormulario,FilmeLista,FilmeItem},
@@ -28,26 +30,34 @@ export default {
     return {
       teste: '',
       filme: {
-        titulo: '234',
-        valor: '1232222',
-        descricao: 'ttt2222',
+        titulo: '3',
+        valor: '1',
+        descricao: '2',
       },
-      filmes: [
-        { "titulo": "erigoso gato",
-          "valor": "1232222",
-          "descricao": "cuidado"
-        }
-      ],
+      filmes: []
+
 
     }
   },
   methods: {
     carregar() {
-      // fetch('filmes.json').then(r => r.json()).then((dados) => {
-      //   this.filmes = dados
-      // })
+       /*fetch(flms).then(
+           r =>{
+             console.log(r)
+             r.json()
+           }
 
-      this.filmes = []
+       ).then((dados) => {
+
+         this.filmes = dados
+       }).catch(
+           ()=>{
+             this.filmes=[{"titulo":"234","valor":"1232222","descricao":"ttt2222"},
+               {"titulo":"f","valor":"d","descricao":"a"} ]
+           }
+       )*/
+
+      this.filmes = flms
 
     },
     cadastra() {

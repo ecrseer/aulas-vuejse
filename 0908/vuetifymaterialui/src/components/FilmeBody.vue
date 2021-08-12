@@ -8,7 +8,7 @@
       <li>{{ filme.valor  }}</li>
       <li>{{ filme.descricao }}</li>
     </ul>
-    <button type="button" class="w-100 btn btn-lg btn-outline-primary">Alugar</button>
+    <v-btn type="button" class="w-100 btn btn-lg btn-outline-primary">Alugar</v-btn>
   </v-card>
 </template>
 
