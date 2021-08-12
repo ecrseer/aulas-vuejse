@@ -7,7 +7,7 @@
           <v-text-field
               v-model="teste"
               :counter="20"
-              label="Exemplo"
+              label="Exemplo2"
               required
           ></v-text-field>
         </v-input>
@@ -21,7 +21,19 @@
 
 
       </v-form>
-
+      <v-col
+          v-for="n in 24"
+          :key="n"
+          cols="4"
+      >
+        <v-card
+            class="pa-2"
+            outlined
+            tile
+        >
+          filme
+        </v-card>
+      </v-col>
     </v-row>
   </v-container>
 </template>
@@ -31,7 +43,7 @@ export default {
   name: 'HelloWorld',
 
   data: () => ({
-    teste: 'ezequiel'
+    teste: ''
   }),
 }
 </script>
