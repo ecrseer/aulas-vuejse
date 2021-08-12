@@ -4,7 +4,7 @@
       <div class="card-header py-3">
         <h4 class="my-0 fw-normal">{{ filme.titulo }}</h4>
       </div>
-      <FilmeBody :filme="filme"></FilmeBody>
+      <FilmeBody :filme="filme" v-on:click="selecionaFilme(filme)"></FilmeBody>
     </div>
   </div>
 </template>
@@ -16,6 +16,11 @@ export default {
   components: {FilmeBody},
   props:{
     filme: Object
+  },
+  methods:{
+    selecionaFilme(filmeP){
+      this.$emit('isFilmeSelecionado',filmeP)
+    }
   }
 
 }

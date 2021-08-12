@@ -4,7 +4,7 @@
                      @salvou="cadastrar"></FilmeFormulario>
 
     <FilmeLista titulo="filmes em destaque">
-      <FilmeItem v-for="ff in filmes" :filme="ff" @editar="editarFilme">
+      <FilmeItem v-for="ff in filmes" :filme="ff" v-on:isFilmeSelecionado="editarFilme(ff)">
       </FilmeItem>
     </FilmeLista>
   </div>
@@ -14,6 +14,7 @@
 import FilmeFormulario from "./components/FilmeFormulario.vue";
 import FilmeLista from "./components/FilmeLista.vue";
 import FilmeItem from "./components/FilmeItem.vue";
+
 export default {
 
   components: {FilmeItem, FilmeLista, FilmeFormulario},
@@ -39,7 +40,6 @@ export default {
     },
     cadastrar(){
       this.filmes.push(this.filme)
-
       this.filme = {}
     }
   },
